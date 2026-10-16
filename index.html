@@ -291,6 +291,62 @@ section.block { padding-block: 88px; }
 .contact h2 { font-size: var(--step-3); }
 .contact h2 em { color: var(--blush); }
 .contact p { color: color-mix(in srgb, var(--bg) 75%, transparent); margin-top: 16px; max-width: 44ch; }
+/* Casos reais */
+.cases { margin-top: 0; display: grid; gap: 24px; }
+.cases .head { margin-bottom: 8px; }
+.cases + .proof { margin-top: 72px; }
+.case { display: grid; grid-template-columns: 1fr; gap: 28px; padding: clamp(24px, 4vw, 40px); border-radius: 24px; background: var(--surface); border: 1px solid var(--line); }
+.case-media { grid-template-columns: 240px 1fr; align-items: center; }
+.case-video { aspect-ratio: 9 / 16; max-width: 100%; border-radius: var(--radius); overflow: hidden; background: var(--ink); }
+.case-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.case-copy { display: grid; gap: 14px; min-width: 0; max-width: 68ch; }
+.case-tag { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.case h3 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); }
+.case p { color: var(--muted); }
+.case blockquote { margin: 0; padding-left: 20px; border-left: 2px solid var(--accent); font-family: var(--f-display); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.45; color: var(--ink); }
+.case-what { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.case-what li { font-size: .82rem; font-weight: 600; padding: .35em .9em; border-radius: 999px; background: var(--blush); color: var(--ink); }
+@media (max-width: 720px) { .case-media { grid-template-columns: 1fr; } .case-video { max-width: 280px; } }
+/* Bom Cuidar: antes e depois */
+.case-bc { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; gap: clamp(28px, 4vw, 56px); }
+.ba { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; position: sticky; top: calc(90px + env(safe-area-inset-top, 0px)); }
+.ba-shot { margin: 0; position: relative; }
+.ba-shot img { width: 100%; aspect-ratio: 921 / 1500; object-fit: cover; object-position: top; border-radius: 18px; display: block; border: 1px solid var(--line); }
+.ba-label { position: absolute; top: 10px; left: 10px; z-index: 1; font-family: var(--f-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; padding: .35em .8em; border-radius: 999px; background: var(--surface); color: var(--muted); }
+.ba-label.ba-after { background: var(--accent); color: var(--accent-ink); }
+.ba-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.ba-stats div { display: grid; gap: 2px; padding: 16px 18px; border-radius: 16px; background: var(--blush); }
+.ba-stats span { font-family: var(--f-mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.ba-stats strong { font-family: var(--f-display); font-weight: 400; font-size: 1.7rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ba-stats small { font-size: .85rem; font-weight: 600; color: var(--accent); }
+.ba-block { display: grid; gap: 10px; }
+.ba-block h3 { font-family: var(--f-body); font-weight: 700; font-size: 1rem; }
+.ba-block ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.ba-block li { position: relative; padding-left: 16px; color: var(--muted); font-size: .95rem; }
+.ba-block li::before { content: ""; position: absolute; left: 0; top: .65em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.ba-block li strong { color: var(--ink); }
+@media (max-width: 860px) { .case-bc { grid-template-columns: 1fr; } .ba { position: static; } }
+
+/* Contacto (faixa escura, texto à esquerda e formulário ao lado) */
+.contact-band { background: var(--accent); color: var(--bg); padding-block: clamp(56px, 8vw, 96px); }
+.contact2 { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.contact2-copy { display: grid; gap: 22px; min-width: 0; }
+.contact2-badge { width: 64px; height: 64px; border-radius: 14px; background: var(--bg); padding: 6px; object-fit: contain; }
+.contact2-copy h2 { font-size: var(--step-3); color: var(--bg); }
+.contact2-copy h2 em { color: var(--blush); }
+.contact2-copy p { color: color-mix(in srgb, var(--bg) 78%, transparent); max-width: 42ch; }
+.cform2 { background: var(--bg); color: var(--ink); border-radius: 22px; padding: clamp(22px, 3vw, 40px); display: grid; gap: 20px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); min-width: 0; }
+.cform2-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; }
+.cform2-full { grid-column: 1 / -1; }
+.cform2 label { display: grid; gap: 8px; font-family: var(--f-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.cform2 input, .cform2 select, .cform2 textarea { font: inherit; font-family: var(--f-body); font-size: .95rem; letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .85em 1em; width: 100%; resize: vertical; }
+.cform2 input:focus, .cform2 select:focus, .cform2 textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.cform2 ::placeholder { color: var(--muted); opacity: .8; }
+.cform2-btn { font: inherit; font-weight: 600; padding: 1em; border: 0; border-radius: 999px; background: var(--accent); color: var(--accent-ink); cursor: pointer; transition: transform .2s; }
+.cform2-btn:hover { transform: translateY(-2px); }
+@media (max-width: 820px) { .contact2 { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .cform2-grid { grid-template-columns: 1fr; } }
+
 /* Mini formulário */
 .contact { align-items: stretch; }
 .cform { display: grid; gap: 16px; background: var(--bg); color: var(--ink); border-radius: 22px; padding: clamp(20px, 3vw, 30px); }
@@ -334,7 +390,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#processo">Método</a></li>
-        <li><a href="#orcamento">Pedir orçamento</a></li>
         <li><a href="#portfolio">Portfólio</a></li>
       </ul>
     </nav>
@@ -409,7 +464,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <h2>Quatro formas de pôr a tua marca <em>a falar</em> nas redes.</h2>
       </div>
       <div class="svc-list">
-        <details class="svc" open>
+        <details class="svc">
           <summary>
             <img src="img/gimbal.jpg" alt="">
             <span class="svc-num">01</span>
@@ -555,41 +610,55 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
   <section class="block" id="ugc">
     <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">UGC</span>
-        <h2>Alguns vídeos que <em>criei</em>.</h2>
-        <p>Conteúdo gravado como utilizadora real, adaptado a cada marca. Carrega no play para ver.</p>
+      <div class="cases">
+        <div class="head">
+          <span class="eyebrow">Caso real · Captação de conteúdo</span>
+          <h2>Bom Cuidar: <em>antes e depois</em>.</h2>
+          <p>Serviço de apoio ao domicílio na Póvoa de Varzim e Vila do Conde.</p>
+        </div>
+
+        <article class="case case-bc">
+          <div class="ba">
+            <figure class="ba-shot">
+              <span class="ba-label">Antes</span>
+              <img src="img/bomcuidar-antes.jpg" alt="Perfil de Instagram da Bom Cuidar antes do trabalho: 22 publicações e 171 seguidores">
+            </figure>
+            <figure class="ba-shot">
+              <span class="ba-label ba-after">Depois</span>
+              <img src="img/bomcuidar-depois.jpg" alt="Perfil de Instagram da Bom Cuidar depois do trabalho: 30 publicações e 212 seguidores">
+            </figure>
+          </div>
+
+          <div class="case-copy">
+            <div class="ba-stats">
+              <div><span>Seguidores</span><strong>171 → 212</strong><small>+41 (+24%)</small></div>
+              <div><span>Publicações</span><strong>22 → 30</strong><small>+8 novas</small></div>
+            </div>
+
+            <div class="ba-block">
+              <h3>Análise do perfil antes</h3>
+              <ul>
+                <li>Feed sem uma linha gráfica definida, com estilos e cores diferentes de publicação para publicação.</li>
+                <li>Sem destaques organizados nos stories.</li>
+                <li>Link da bio para o Facebook, em vez de reunir os contactos num só sítio.</li>
+                <li>Pouco vídeo com a equipa a dar a cara pelo serviço.</li>
+              </ul>
+            </div>
+
+            <div class="ba-block">
+              <h3>O que fiz</h3>
+              <ul>
+                <li><strong>Nova linha gráfica</strong> com as cores da marca e modelos consistentes para as publicações.</li>
+                <li><strong>Captação e estruturação de vídeos</strong> com a equipa, para apresentar o serviço de forma próxima.</li>
+                <li><strong>Destaques organizados</strong>: Atividades, Serviços, Feedbacks, Equipa e Localização.</li>
+                <li><strong>Bio e link revistos</strong>, com todos os contactos num só link.</li>
+              </ul>
+            </div>
+
+            <blockquote>Com a minha ajuda na captação e estruturação do conteúdo, conseguimos transformar essas ideias em vídeos claros, autênticos e alinhados com a mensagem que queria transmitir.</blockquote>
+          </div>
+        </article>
       </div>
-      <div class="ugc-grid">
-        <figure class="ugc-card">
-          <div class="ugc-media"><video src="videos/fini.mp4" poster="videos/fini.jpg" controls playsinline preload="none"></video></div>
-          <figcaption><strong>Fini</strong><span>Pink Friday · UGC orgânico</span></figcaption>
-        </figure>
-        <figure class="ugc-card">
-          <div class="ugc-media"><video src="videos/oculos.mp4" poster="videos/oculos.jpg" controls playsinline preload="none"></video></div>
-          <figcaption><strong>Os Meus Óculos</strong><span>Ótica · UGC orgânico</span></figcaption>
-        </figure>
-        <figure class="ugc-card">
-          <div class="ugc-media"><video src="videos/zelthy.mp4" poster="videos/zelthy.jpg" controls playsinline preload="none"></video></div>
-          <figcaption><strong>Zelthy</strong><span>Casa · UGC</span></figcaption>
-        </figure>
-        <figure class="ugc-card">
-          <div class="ugc-media"><video src="videos/skincare.mp4" poster="videos/skincare.jpg" controls playsinline preload="none"></video></div>
-          <figcaption><strong>Skincare</strong><span>Beleza · UGC</span></figcaption>
-        </figure>
-        <figure class="ugc-card">
-          <div class="ugc-media"><video src="videos/joias.mp4" poster="videos/joias.jpg" controls playsinline preload="none"></video></div>
-          <figcaption><strong>Joias</strong><span>Produto · UGC</span></figcaption>
-        </figure>
-        <figure class="ugc-card">
-          <a class="ugc-media ugc-more" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">
-            <img src="img/ugc.jpg" alt="Mãos a mostrar um blush aberto, num vídeo UGC de maquilhagem">
-            <span>Ver todos os vídeos no portfólio →</span>
-          </a>
-          <figcaption><strong>Portfólio completo</strong><span>Mais de 30 marcas e negócios</span></figcaption>
-        </figure>
-      </div>
-      <div class="ugc-cta"><a class="btn btn-primary" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">Ver o meu portfólio</a></div>
       <div class="proof" id="portfolio">
         <div class="proof-number">
           <span class="big">+30</span>
@@ -604,84 +673,51 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
   </section>
 
-  <section class="block" id="orcamento" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Pedir orçamento</span>
-        <h2>Diz-me o que precisas e eu envio-te uma <em>proposta</em>.</h2>
-        <p>Escolhe o tipo de serviço e preenche o formulário. Demora poucos minutos.</p>
-      </div>
-      <div class="quotes">
-        <a class="quote" href="https://tally.so/r/8146dz" target="_blank" rel="noopener">
-          <img src="img/joias.jpg" alt="Joana Moreira a gravar conteúdo de joias com o telemóvel">
-          <div class="quote-body">
-            <span class="kind">Captação de conteúdo · UGC · Design</span>
-            <h3>Orçamento para as tuas redes sociais</h3>
-            <span class="quote-link">Pedir orçamento <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-        <a class="quote" href="https://tally.so/r/Mep6N8" target="_blank" rel="noopener">
-          <img src="img/gimbal.jpg" alt="Joana Moreira a preparar o telemóvel no estabilizador">
-          <div class="quote-body">
-            <span class="kind">Eventos · entrega até 24h</span>
-            <h3>Cobertura de eventos</h3>
-            <span class="quote-link">Pedir orçamento <span aria-hidden="true">→</span></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="contacto" style="padding-top:0">
-    <div class="wrap">
-      <div class="contact">
-        <img class="contact-photo" src="img/processo-2.jpg" alt="Joana Moreira ao telemóvel com o portátil no colo">
-        <div class="contact-body">
-        <div>
-          <img class="logo-white" src="data:image/png;base64,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" alt="Joana Moreira"><br>
-          <span class="eyebrow" style="color:var(--blush)">Contacto</span>
-          <h2 style="margin-top:14px">Vamos criar conteúdo <em>juntos</em>?</h2>
-          <p>Conta-me sobre o teu negócio e o que precisas. Respondo com uma proposta à tua medida.</p>
-        </div>
-        <form class="cform" id="cform" action="https://formsubmit.co/by.joanamoreira@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Novo contacto pelo site byjoanamoreira.com">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://byjoanamoreira.com/#obrigado">
-          <input type="text" name="_honey" class="cform-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <label for="cf-nome">O teu nome
-            <input id="cf-nome" name="Nome" type="text" placeholder="Como te chamas?" required autocomplete="name">
-          </label>
-          <label for="cf-tel">O teu telemóvel
-            <input id="cf-tel" name="Telemóvel" type="tel" placeholder="9XX XXX XXX" required autocomplete="tel" inputmode="tel">
-          </label>
-          <label for="cf-email">O teu email (opcional)
-            <input id="cf-email" name="email" type="email" placeholder="nome@exemplo.pt" autocomplete="email">
-          </label>
-          <fieldset>
-            <legend>O que procuras?</legend>
-            <div class="chips">
-              <label><input type="radio" name="Serviço" value="Captação de conteúdo"><span>Captação de conteúdo</span></label>
-              <label><input type="radio" name="Serviço" value="UGC"><span>UGC</span></label>
-              <label><input type="radio" name="Serviço" value="Captação de eventos"><span>Eventos</span></label>
-              <label><input type="radio" name="Serviço" value="Design gráfico"><span>Design gráfico</span></label>
-              <label><input type="radio" name="Serviço" value="Ainda não sei" checked><span>Ainda não sei</span></label>
-            </div>
-          </fieldset>
-          <label for="cf-msg">Conta-me mais (opcional)
-            <textarea id="cf-msg" name="Mensagem" rows="3" placeholder="Por exemplo: o teu negócio, o que precisas e para quando"></textarea>
-          </label>
-          <p class="cform-note">Uso os teus dados só para te responder.</p>
-          <button type="submit" class="cform-btn">Enviar pedido</button>
-          <p class="cform-ok" id="obrigado" hidden>Obrigada! Recebi o teu pedido e respondo em breve.</p>
-        </form>
+  <section class="contact-band" id="contacto">
+    <div class="wrap contact2">
+      <div class="contact2-copy">
+        <img class="contact2-badge" src="img/favicon.png" alt="JM">
+        <h2>Vamos pôr a tua marca a <em>falar</em> nas redes?</h2>
+        <p>Conta-me sobre o teu negócio e o que precisas. Respondo com uma proposta à tua medida, sem compromisso.</p>
         <ul class="socials">
           <li><a href="https://wa.me/351914790480?text=Ol%C3%A1%20Joana!%20Vi%20o%20teu%20site%20e%20gostava%20de%20saber%20mais%20sobre%20os%20teus%20servi%C3%A7os." target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a></li>
-          <li><a href="https://www.instagram.com/joanamoreira.pt/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 8c0-1.6-.4-3-1.6-4.2S17.6 2.1 16 2.1C14.3 2 9.7 2 8 2.1c-1.6 0-3 .4-4.2 1.6S2.2 6.4 2.1 8C2 9.7 2 14.3 2.1 16c0 1.6.4 3 1.6 4.2s2.6 1.6 4.2 1.7c1.7.1 6.3.1 8 0 1.6-.1 3-.4 4.2-1.7s1.6-2.6 1.7-4.2c.1-1.7.1-6.3 0-8zm-2 9.8a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.300 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.3 3.3 0 0 1 6.3 4.600c1.3-.5 4.3-.4 5.700-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.700z"/></svg></a></li>
-          <li><a href="https://www.tiktok.com/@joanamoreira.pt" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2-2.8V9.2a6.2 6.2 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.4 1.4V6.7a4.500 4.500 0 0 1-4.4-4.700z"/></svg></a></li>
+          <li><a href="https://www.instagram.com/joanamoreira.pt/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 8c0-1.6-.4-3-1.6-4.2S17.6 2.1 16 2.1C14.3 2 9.7 2 8 2.1c-1.6 0-3 .4-4.2 1.6S2.2 6.4 2.1 8C2 9.7 2 14.3 2.1 16c0 1.6.4 3 1.6 4.2s2.6 1.6 4.2 1.7c1.7.1 6.3.1 8 0 1.6-.1 3-.4 4.2-1.7s1.6-2.6 1.7-4.2c.1-1.7.1-6.3 0-8zm-2 9.8a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.3 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.3 3.3 0 0 1 6.3 4.6c1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z"/></svg></a></li>
+          <li><a href="https://www.tiktok.com/@joanamoreira.pt" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.3v13.4a2.9 2.9 0 1 1-2-2.8V9.2a6.2 6.2 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.4 1.4V6.7a4.5 4.5 0 0 1-4.4-4.7z"/></svg></a></li>
           <li><a href="mailto:by.joanamoreira@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.6-8-5.6zM5.3 7 12 11.7 18.7 7H5.3z"/></svg></a></li>
         </ul>
-        </div>
       </div>
+      <form class="cform2" id="cform" action="https://formsubmit.co/by.joanamoreira@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Novo contacto pelo site byjoanamoreira.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://byjoanamoreira.com/#obrigado">
+        <input type="text" name="_honey" class="cform-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="cform2-grid">
+          <label for="cf-nome">Nome
+            <input id="cf-nome" name="Nome" type="text" placeholder="O teu nome" required autocomplete="name">
+          </label>
+          <label for="cf-email">Email
+            <input id="cf-email" name="email" type="email" placeholder="o-teu@email.com" required autocomplete="email">
+          </label>
+          <label for="cf-insta">Instagram
+            <input id="cf-insta" name="Instagram" type="text" placeholder="@oteunegocio">
+          </label>
+          <label for="cf-servico">Serviço
+            <select id="cf-servico" name="Serviço">
+              <option value="" selected>Escolhe um serviço</option>
+              <option>Captação de conteúdo</option>
+              <option>Criação de UGC</option>
+              <option>Captação de eventos</option>
+              <option>Design gráfico</option>
+              <option>Ainda não sei</option>
+            </select>
+          </label>
+          <label for="cf-msg" class="cform2-full">Mensagem
+            <textarea id="cf-msg" name="Mensagem" rows="4" placeholder="Conta-me um pouco sobre o teu negócio e o que precisas."></textarea>
+          </label>
+        </div>
+        <button type="submit" class="cform2-btn">Enviar mensagem</button>
+        <p class="cform-ok" id="obrigado" hidden>Obrigada! Recebi a tua mensagem e respondo em breve.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -699,8 +735,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   }
 
   // Ao dar play num vídeo, pausa os outros
-  document.querySelectorAll('.ugc-media video').forEach(v => v.addEventListener('play', () => {
-    document.querySelectorAll('.ugc-media video').forEach(o => { if (o !== v) o.pause(); });
+  document.querySelectorAll('main video').forEach(v => v.addEventListener('play', () => {
+    document.querySelectorAll('main video').forEach(o => { if (o !== v) o.pause(); });
   }));
 
   // Separadores do método: Captação de conteúdo / UGC
