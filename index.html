@@ -122,6 +122,34 @@ section.block { padding-block: 88px; }
 .head p { color: var(--muted); }
 
 /* Serviços */
+/* Lista de serviços que abre e fecha */
+.svc-list { border-top: 1px solid var(--line); }
+.svc { border-bottom: 1px solid var(--line); }
+.svc summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 120px 64px 1fr 40px; align-items: center; gap: 24px; padding: 22px 12px; }
+.svc summary::-webkit-details-marker { display: none; }
+.svc summary img { width: 120px; height: 120px; object-fit: cover; border-radius: 16px; display: block; transition: transform .3s; }
+.svc summary:hover img { transform: scale(1.03); }
+.svc-num { font-family: var(--f-display); font-size: 1.9rem; color: var(--muted); }
+.svc-title { display: grid; gap: 6px; font-family: var(--f-display); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.1; color: var(--ink); min-width: 0; }
+.svc-title small { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.svc-icon { position: relative; width: 22px; height: 22px; justify-self: end; }
+.svc-icon::before, .svc-icon::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--accent); transition: transform .25s; }
+.svc-icon::after { transform: rotate(90deg); }
+.svc[open] .svc-icon::after { transform: rotate(0deg); }
+.svc-body { padding: 0 12px 30px calc(120px + 64px + 48px + 12px); display: grid; gap: 16px; max-width: 980px; }
+.svc-body > p:first-child { font-size: 1.05rem; color: var(--ink); max-width: 62ch; }
+.svc-body ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; }
+.svc-body li { position: relative; padding-left: 16px; color: var(--ink); }
+.svc-body li::before { content: ""; position: absolute; left: 0; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.svc-for { font-size: .92rem; color: var(--muted); }
+.svc-for strong { color: var(--ink); }
+@media (max-width: 760px) {
+  .svc summary { grid-template-columns: 72px 1fr 28px; gap: 14px; padding: 16px 4px; }
+  .svc summary img { width: 72px; height: 72px; border-radius: 12px; }
+  .svc-num { display: none; }
+  .svc-body { padding: 0 4px 24px; }
+  .svc-body ul { grid-template-columns: 1fr; }
+}
 .services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .service { display: grid; grid-template-rows: auto auto 1fr auto; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; min-width: 0; }
 .service .tag { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .1em; color: var(--accent); text-transform: uppercase; }
@@ -142,6 +170,9 @@ section.block { padding-block: 88px; }
 .about-copy { display: grid; gap: 18px; min-width: 0; }
 .about-copy h2 { font-size: var(--step-3); }
 .about-copy p { color: var(--muted); max-width: 54ch; }
+.how-help { border-left: 2px solid var(--accent); padding: 4px 0 4px 18px; display: grid; gap: 6px; }
+.how-help span { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.how-help p { font-family: var(--f-display); font-size: 1.25rem; line-height: 1.4; color: var(--ink); }
 .traits { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .traits li { font-family: var(--f-display); font-style: italic; font-size: 1.2rem; color: var(--accent); padding: .35em 1.1em; border: 1px solid var(--accent); border-radius: 999px; background: var(--surface); }
 .about-copy .sign { font-family: var(--f-display); font-style: italic; font-size: 1.5rem; color: var(--accent); }
@@ -150,7 +181,19 @@ section.block { padding-block: 88px; }
 /* Porquê UGC */
 .why { display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center; }
 .why-copy { min-width: 0; }
-.why + .proof { margin-top: 72px; }
+.why + .proof, .ugc-grid + .proof { margin-top: 72px; }
+.ugc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.ugc-card { margin: 0; display: grid; gap: 12px; min-width: 0; }
+.ugc-media { position: relative; display: block; aspect-ratio: 9 / 16; max-width: 100%; border-radius: var(--radius); overflow: hidden; background: var(--ink); }
+.ugc-media video, .ugc-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ugc-more::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(61,47,36,0) 45%, rgba(61,47,36,.8)); }
+.ugc-more span { position: absolute; z-index: 1; left: 18px; right: 18px; bottom: 18px; color: #fff; font-weight: 600; }
+.ugc-more:hover img { transform: scale(1.03); transition: transform .4s; }
+.ugc-card figcaption { display: grid; gap: 2px; }
+.ugc-card figcaption strong { font-family: var(--f-display); font-weight: 400; font-size: 1.3rem; }
+.ugc-card figcaption span { font-size: .88rem; color: var(--muted); }
+.ugc-cta { display: flex; justify-content: center; margin-top: 36px; }
+@media (max-width: 760px) { .ugc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
 .why .head { margin-bottom: 32px; }
 .why-photo { width: 100%; aspect-ratio: 9 / 14; object-fit: cover; object-position: 50% 55%; border-radius: 200px 200px var(--radius) var(--radius); display: block; }
 .reasons { list-style: none; margin: 0; padding: 0; display: grid; counter-reset: r; }
@@ -170,6 +213,19 @@ section.block { padding-block: 88px; }
 .tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
 .tabs button:hover:not([aria-selected="true"]) { color: var(--ink); }
 @media (max-width: 860px) { .process { grid-template-columns: 1fr; gap: 36px; } .process-photo { aspect-ratio: 16 / 10; object-position: 50% 55%; } }
+/* Método em linha do tempo */
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; counter-reset: t; display: grid; gap: 34px; }
+.timeline::before { content: ""; position: absolute; left: 21px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 25%, transparent)); }
+.timeline li { counter-increment: t; position: relative; padding-left: 68px; display: grid; gap: 6px; min-width: 0; }
+.timeline li::before { content: counter(t); position: absolute; left: 0; top: 0; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-family: var(--f-display); font-size: 1.25rem; box-shadow: 0 0 0 6px var(--blush); }
+.tl-step { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); padding-top: 4px; }
+.timeline h3 { font-family: var(--f-display); font-weight: 400; font-size: 1.5rem; }
+.timeline p { color: var(--muted); font-size: .97rem; max-width: 58ch; }
+.tl-result { justify-self: start; margin-top: 4px; font-size: .85rem; font-weight: 600; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: .35em .9em; }
+.tl-result::before { content: "✓ "; color: var(--accent); }
+.process { align-items: start; }
+.process-photo { position: sticky; top: calc(90px + env(safe-area-inset-top, 0px)); }
+@media (max-width: 860px) { .process-photo { position: static; } }
 .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 36px; list-style: none; margin: 0; padding: 0; counter-reset: s; }
 .steps li { counter-increment: s; display: grid; gap: 10px; min-width: 0; }
 .steps li::before { content: "0" counter(s); font-family: var(--f-display); font-style: italic; font-size: 2.4rem; color: var(--accent); line-height: 1; }
@@ -235,6 +291,26 @@ section.block { padding-block: 88px; }
 .contact h2 { font-size: var(--step-3); }
 .contact h2 em { color: var(--blush); }
 .contact p { color: color-mix(in srgb, var(--bg) 75%, transparent); margin-top: 16px; max-width: 44ch; }
+/* Mini formulário */
+.contact { align-items: stretch; }
+.cform { display: grid; gap: 16px; background: var(--bg); color: var(--ink); border-radius: 22px; padding: clamp(20px, 3vw, 30px); }
+.cform label { display: grid; gap: 8px; font-size: .9rem; font-weight: 600; }
+.cform input[type="text"], .cform input[type="tel"], .cform input[type="email"], .cform textarea { font: inherit; font-weight: 400; font-size: .95rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: .8em 1em; width: 100%; resize: vertical; }
+.cform input:focus, .cform textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.cform ::placeholder { color: var(--muted); opacity: .8; }
+.cform fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cform legend { font-size: .9rem; font-weight: 600; margin-bottom: 10px; padding: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label { display: inline-flex; font-weight: 500; cursor: pointer; }
+.chips input { position: absolute; opacity: 0; pointer-events: none; }
+.chips span { padding: .55em 1.05em; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: .88rem; transition: background .2s, color .2s; }
+.chips input:checked + span { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chips input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cform-note { font-size: .8rem; color: var(--muted); margin: 0 !important; }
+.cform-btn { justify-self: start; font: inherit; font-weight: 600; padding: .85em 1.6em; border: 0; border-radius: 999px; background: var(--accent); color: var(--accent-ink); cursor: pointer; transition: transform .2s; }
+.cform-btn:hover { transform: translateY(-2px); }
+.cform-hp { position: absolute; left: -9999px; }
+.cform-ok { margin: 0 !important; font-weight: 600; color: var(--accent) !important; }
 .socials { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 14px; }
 .socials a { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--bg) 35%, transparent); color: var(--bg); transition: background .2s, color .2s, transform .2s; }
 .socials a:hover { background: var(--bg); color: var(--accent); transform: translateY(-2px); }
@@ -311,9 +387,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <div class="about-copy">
         <span class="eyebrow">Sobre mim</span>
         <h2>Olá, sou a <em>Joana</em>.</h2>
-        <p>Sou licenciada em Design, mas foi nas redes sociais que encontrei o espaço onde realmente queria estar. Trago essa formação para o meu trabalho como criadora de conteúdos: no olhar atento à composição, à estética e à forma como cada detalhe comunica algo sobre a marca.</p>
-        <p>Hoje ajudo negócios e marcas a criar conteúdo pensado para as redes sociais, gravado em formato vertical e pronto a publicar. Do primeiro contacto à entrega, acompanho todo o processo: percebo o negócio, o público e o que faz sentido comunicar, planeio cada conteúdo com propósito e edito tudo até ficar pronto a partilhar.</p>
-        <p>Já trabalhei com marcas de beleza, casa, ótica e apps, e com negócios locais que querem aparecer mais e mostrar quem está por trás do trabalho. É isso que mais me motiva: tornar uma marca mais próxima de quem a segue, através de conteúdo que soa verdadeiro e não a um anúncio qualquer.</p>
+        <p>Ajudo negócios que querem destacar-se nas redes sociais de forma autêntica e estratégica, com conteúdos que chamam a atenção e criam uma ligação real com o público.</p>
+        <p>Mais do que criar vídeos ou posts, o meu foco é perceber a identidade da marca, o público-alvo e os objetivos do negócio, para desenvolver conteúdos alinhados com aquilo que a marca quer transmitir.</p>
+        <div class="how-help">
+          <span>Como ajudo a tua marca</span>
+          <p>Conteúdos autênticos que aproximam a marca do seu público e fortalecem a sua presença digital.</p>
+        </div>
         <ul class="traits" aria-label="Como trabalho">
           <li>Próxima</li>
           <li>Rigorosa</li>
@@ -329,43 +408,79 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <span class="eyebrow">Serviços</span>
         <h2>Quatro formas de pôr a tua marca <em>a falar</em> nas redes.</h2>
       </div>
-      <div class="services">
-        <article class="service">
-          <span class="tag">Captação</span>
-          <h3>Captação de conteúdo</h3>
-          <p>Planeamento, captação e entrega de conteúdos prontos a publicar, para marcas e negócios que não têm tempo ou ideias para criar conteúdo nas redes sociais.</p>
-          <div class="for">
-            <strong>Para quem é?</strong>
-            <p>Marcas, negócios locais e empreendedores que querem manter uma presença online consistente, profissional e mais próxima do público.</p>
+      <div class="svc-list">
+        <details class="svc" open>
+          <summary>
+            <img src="img/gimbal.jpg" alt="">
+            <span class="svc-num">01</span>
+            <span class="svc-title"><small>Captação</small>Captação de conteúdo</span>
+            <span class="svc-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="svc-body">
+            <p>Planeamento, captação e entrega de conteúdos prontos a publicar, para marcas e negócios que não têm tempo ou ideias para criar conteúdo nas redes sociais.</p>
+            <ul>
+              <li>Reunião para conhecer o negócio</li>
+              <li>Planeamento dos conteúdos</li>
+              <li>Gravação numa só tarde</li>
+              <li>Edição e entrega pronta a publicar</li>
+            </ul>
+            <p class="svc-for"><strong>Para</strong> marcas, negócios locais e empreendedores que querem uma presença online consistente, profissional e mais próxima do público.</p>
           </div>
-        </article>
-        <article class="service">
-          <span class="tag">UGC</span>
-          <h3>Criação de UGC</h3>
-          <p>Conteúdos UGC autênticos, baseados na minha experiência como utilizadora e adaptados à marca, para criar proximidade e credibilidade.</p>
-          <div class="for">
-            <strong>Para quem é?</strong>
-            <p>Marcas que querem uma presença digital profissional, mas não têm tempo para criar conteúdo.</p>
+        </details>
+        <details class="svc">
+          <summary>
+            <img src="img/ugc.jpg" alt="">
+            <span class="svc-num">02</span>
+            <span class="svc-title"><small>UGC</small>Criação de UGC</span>
+            <span class="svc-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="svc-body">
+            <p>Conteúdos UGC autênticos, baseados na minha experiência como utilizadora e adaptados à marca, para criar proximidade e credibilidade.</p>
+            <ul>
+              <li>Análise do briefing da marca</li>
+              <li>Persona alinhada com o teu público</li>
+              <li>Guião aprovado antes de gravar</li>
+              <li>Vídeos prontos a usar pela marca</li>
+            </ul>
+            <p class="svc-for"><strong>Para</strong> marcas que querem uma presença digital profissional, mas não têm tempo para criar conteúdo.</p>
           </div>
-        </article>
-        <article class="service">
-          <span class="tag">Eventos · até 24h</span>
-          <h3>Captação de eventos</h3>
-          <p>Captação mobile de eventos, com gravação em tempo real, entrega rápida (até 24h) e conteúdo pronto a publicar.</p>
-          <div class="for">
-            <strong>Para quem é?</strong>
-            <p>Eventos corporativos, ativações de marca, casamentos e ocasiões especiais.</p>
+        </details>
+        <details class="svc">
+          <summary>
+            <img src="img/contacto.jpg" alt="">
+            <span class="svc-num">03</span>
+            <span class="svc-title"><small>Eventos</small>Captação de eventos</span>
+            <span class="svc-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="svc-body">
+            <p>Captação mobile de eventos, com gravação em tempo real e conteúdo pronto a publicar.</p>
+            <ul>
+              <li>Captação com telemóvel</li>
+              <li>Gravação em tempo real</li>
+              <li>Entrega rápida, até 24h</li>
+              <li>Conteúdo pronto a publicar</li>
+            </ul>
+            <p class="svc-for"><strong>Para</strong> eventos corporativos, ativações de marca, casamentos e ocasiões especiais.</p>
           </div>
-        </article>
-        <article class="service">
-          <span class="tag">Design</span>
-          <h3>Design gráfico</h3>
-          <p>Do branding aos conteúdos para redes sociais, crio visuais estratégicos que destacam a tua marca e comunicam com clareza.</p>
-          <div class="for">
-            <strong>Para quem é?</strong>
-            <p>Negócios que querem uma identidade visual forte e consistente.</p>
+        </details>
+        <details class="svc">
+          <summary>
+            <img src="img/processo.jpg" alt="">
+            <span class="svc-num">04</span>
+            <span class="svc-title"><small>Design</small>Design gráfico</span>
+            <span class="svc-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="svc-body">
+            <p>Do branding aos conteúdos para redes sociais, crio visuais estratégicos que destacam a tua marca e comunicam com clareza.</p>
+            <ul>
+              <li>Branding e identidade visual</li>
+              <li>Visuais para redes sociais</li>
+              <li>Comunicação clara da marca</li>
+              <li>Imagem forte e consistente</li>
+            </ul>
+            <p class="svc-for"><strong>Para</strong> negócios que querem uma identidade visual forte e consistente.</p>
           </div>
-        </article>
+        </details>
       </div>
     </div>
   </section>
@@ -382,17 +497,57 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <button type="button" role="tab" id="tab-captacao" aria-controls="steps-captacao" aria-selected="true">Captação de conteúdo</button>
         <button type="button" role="tab" id="tab-ugc" aria-controls="steps-ugc" aria-selected="false">UGC</button>
       </div>
-      <ol class="steps" id="steps-captacao" role="tabpanel" aria-labelledby="tab-captacao">
-        <li><h3>Reunião inicial</h3><p>Marcamos uma conversa para perceber o teu negócio e o teu público-alvo, e começamos a pensar em ideias de conteúdo que façam sentido para a tua marca.</p></li>
-        <li><h3>Planeamento</h3><p>Com base nessa conversa, preparo todo o planeamento de conteúdos e envio-te para aprovação, para ficares a par de tudo antes de gravarmos.</p></li>
-        <li><h3>Captação</h3><p>Depois de aprovado, marcamos um dia para gravar. Como já está tudo planeado, conseguimos gravar tudo numa só tarde, sem perder tempo a pensar no que fazer no momento.</p></li>
-        <li><h3>Edição e entrega</h3><p>Trato da edição de todos os conteúdos e entrego-tos prontos a publicar, sem precisares de mexer em mais nada.</p></li>
+      <ol class="timeline" id="steps-captacao" role="tabpanel" aria-labelledby="tab-captacao">
+        <li>
+          <span class="tl-step">Passo 1 · Conhecer</span>
+          <h3>Reunião inicial</h3>
+          <p>Marcamos uma conversa para perceber o teu negócio e o teu público-alvo, e começamos a pensar em ideias de conteúdo que façam sentido para a tua marca.</p>
+          <span class="tl-result">Ficas com ideias de conteúdo pensadas para a tua marca</span>
+        </li>
+        <li>
+          <span class="tl-step">Passo 2 · Planear</span>
+          <h3>Planeamento</h3>
+          <p>Com base nessa conversa, preparo todo o planeamento de conteúdos e envio-te para aprovação, para ficares a par de tudo antes de gravarmos.</p>
+          <span class="tl-result">Aprovas o plano antes de se gravar alguma coisa</span>
+        </li>
+        <li>
+          <span class="tl-step">Passo 3 · Gravar</span>
+          <h3>Captação</h3>
+          <p>Depois de aprovado, marcamos um dia para gravar. Como já está tudo planeado, conseguimos gravar tudo numa só tarde, sem perder tempo a pensar no que fazer no momento.</p>
+          <span class="tl-result">Tudo gravado numa só tarde</span>
+        </li>
+        <li>
+          <span class="tl-step">Passo 4 · Entregar</span>
+          <h3>Edição e entrega</h3>
+          <p>Trato da edição de todos os conteúdos e entrego-tos prontos a publicar, sem precisares de mexer em mais nada.</p>
+          <span class="tl-result">Recebes os conteúdos prontos a publicar</span>
+        </li>
       </ol>
-      <ol class="steps" id="steps-ugc" role="tabpanel" aria-labelledby="tab-ugc" hidden>
-        <li><h3>Briefing</h3><p>Recebo o briefing da marca e analiso bem o que é pedido, o público-alvo e o objetivo por trás do conteúdo. Se precisares de ajuda a definir isto, podemos marcar uma reunião para percebermos em conjunto o que faz mais sentido para a tua marca.</p></li>
-        <li><h3>Persona</h3><p>Com base nessa informação, crio uma persona alinhada com o público da marca, para que o conteúdo pareça genuíno e não um anúncio qualquer.</p></li>
-        <li><h3>Guião</h3><p>Escrevo o guião com tudo pensado ao pormenor e envio-o para aprovação, para garantir que fica tudo alinhado antes de avançarmos para a gravação.</p></li>
-        <li><h3>Gravação e entrega</h3><p>Depois de aprovado, gravo o conteúdo e entrego tudo pronto a usar pela marca.</p></li>
+      <ol class="timeline" id="steps-ugc" role="tabpanel" aria-labelledby="tab-ugc" hidden>
+        <li>
+          <span class="tl-step">Passo 1 · Perceber</span>
+          <h3>Briefing</h3>
+          <p>Recebo o briefing da marca e analiso bem o que é pedido, o público-alvo e o objetivo por trás do conteúdo. Se precisares de ajuda a definir isto, podemos marcar uma reunião para percebermos em conjunto o que faz mais sentido para a tua marca.</p>
+          <span class="tl-result">Objetivo e público bem definidos</span>
+        </li>
+        <li>
+          <span class="tl-step">Passo 2 · Criar a persona</span>
+          <h3>Persona</h3>
+          <p>Com base nessa informação, crio uma persona alinhada com o público da marca, para que o conteúdo pareça genuíno e não um anúncio qualquer.</p>
+          <span class="tl-result">Uma voz próxima de quem te segue</span>
+        </li>
+        <li>
+          <span class="tl-step">Passo 3 · Escrever</span>
+          <h3>Guião</h3>
+          <p>Escrevo o guião com tudo pensado ao pormenor e envio-o para aprovação, para garantir que fica tudo alinhado antes de avançarmos para a gravação.</p>
+          <span class="tl-result">Aprovas o guião antes de gravar</span>
+        </li>
+        <li>
+          <span class="tl-step">Passo 4 · Gravar e entregar</span>
+          <h3>Gravação e entrega</h3>
+          <p>Depois de aprovado, gravo o conteúdo e entrego tudo pronto a usar pela marca.</p>
+          <span class="tl-result">Vídeos prontos a usar nas redes ou em anúncios</span>
+        </li>
       </ol>
       </div>
     </div>
@@ -400,23 +555,41 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
   <section class="block" id="ugc">
     <div class="wrap">
-    <div class="why">
-      <div class="why-copy">
-        <div class="head">
-          <span class="eyebrow">Porquê UGC?</span>
-          <h2>Porque as pessoas confiam em <em>pessoas</em>.</h2>
-          <p>UGC é conteúdo criado por uma pessoa real, a mostrar o produto como o usa no dia a dia. Estas são as principais razões para a tua marca apostar nele.</p>
-        </div>
-        <ol class="reasons">
-          <li><h3>Gera confiança</h3><p>Uma recomendação de alguém real é mais credível do que uma publicidade tradicional. Quem vê sente que está a ouvir a opinião de uma pessoa como ela.</p></li>
-          <li><h3>Parece natural no feed</h3><p>O conteúdo encaixa entre os vídeos que as pessoas já veem, por isso prende a atenção em vez de ser passado à frente como um anúncio.</p></li>
-          <li><h3>Mostra o produto em uso</h3><p>Textura, tamanho, resultado: o vídeo responde às dúvidas de quem está a pensar comprar e ajuda-o a decidir.</p></li>
-          <li><h3>Funciona em anúncios</h3><p>Os mesmos vídeos podem ser usados em campanhas pagas, onde o formato próximo e autêntico costuma ter bons resultados.</p></li>
-          <li><h3>Conteúdo sem grandes produções</h3><p>Recebes vídeos prontos a usar nas redes, nos anúncios ou no site, sem precisares de estúdio, equipa ou modelos.</p></li>
-        </ol>
+      <div class="head">
+        <span class="eyebrow">UGC</span>
+        <h2>Alguns vídeos que <em>criei</em>.</h2>
+        <p>Conteúdo gravado como utilizadora real, adaptado a cada marca. Carrega no play para ver.</p>
       </div>
-      <img class="why-photo" src="img/ugc.jpg" alt="Mãos a mostrar um blush aberto, num vídeo UGC de maquilhagem">
-    </div>
+      <div class="ugc-grid">
+        <figure class="ugc-card">
+          <div class="ugc-media"><video src="videos/fini.mp4" poster="videos/fini.jpg" controls playsinline preload="none"></video></div>
+          <figcaption><strong>Fini</strong><span>Pink Friday · UGC orgânico</span></figcaption>
+        </figure>
+        <figure class="ugc-card">
+          <div class="ugc-media"><video src="videos/oculos.mp4" poster="videos/oculos.jpg" controls playsinline preload="none"></video></div>
+          <figcaption><strong>Os Meus Óculos</strong><span>Ótica · UGC orgânico</span></figcaption>
+        </figure>
+        <figure class="ugc-card">
+          <div class="ugc-media"><video src="videos/zelthy.mp4" poster="videos/zelthy.jpg" controls playsinline preload="none"></video></div>
+          <figcaption><strong>Zelthy</strong><span>Casa · UGC</span></figcaption>
+        </figure>
+        <figure class="ugc-card">
+          <div class="ugc-media"><video src="videos/skincare.mp4" poster="videos/skincare.jpg" controls playsinline preload="none"></video></div>
+          <figcaption><strong>Skincare</strong><span>Beleza · UGC</span></figcaption>
+        </figure>
+        <figure class="ugc-card">
+          <div class="ugc-media"><video src="videos/joias.mp4" poster="videos/joias.jpg" controls playsinline preload="none"></video></div>
+          <figcaption><strong>Joias</strong><span>Produto · UGC</span></figcaption>
+        </figure>
+        <figure class="ugc-card">
+          <a class="ugc-media ugc-more" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">
+            <img src="img/ugc.jpg" alt="Mãos a mostrar um blush aberto, num vídeo UGC de maquilhagem">
+            <span>Ver todos os vídeos no portfólio →</span>
+          </a>
+          <figcaption><strong>Portfólio completo</strong><span>Mais de 30 marcas e negócios</span></figcaption>
+        </figure>
+      </div>
+      <div class="ugc-cta"><a class="btn btn-primary" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">Ver o meu portfólio</a></div>
       <div class="proof" id="portfolio">
         <div class="proof-number">
           <span class="big">+30</span>
@@ -425,7 +598,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div class="proof-copy">
           <h2>Já ajudei mais de <em>30 marcas</em> e negócios.</h2>
           <p>De marcas de beleza, casa e alimentação a negócios locais e eventos. Podes ver os projetos, vídeos e fotografias no meu portfólio.</p>
-          <div><a class="btn btn-primary" href="https://joanamoreiraugc.my.canva.site/" target="_blank" rel="noopener">Ver o meu portfólio</a></div>
+          <div><a class="btn btn-primary" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">Ver o meu portfólio</a></div>
         </div>
       </div>
     </div>
@@ -470,6 +643,37 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <h2 style="margin-top:14px">Vamos criar conteúdo <em>juntos</em>?</h2>
           <p>Conta-me sobre o teu negócio e o que precisas. Respondo com uma proposta à tua medida.</p>
         </div>
+        <form class="cform" id="cform" action="https://formsubmit.co/by.joanamoreira@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Novo contacto pelo site byjoanamoreira.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://byjoanamoreira.com/#obrigado">
+          <input type="text" name="_honey" class="cform-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label for="cf-nome">O teu nome
+            <input id="cf-nome" name="Nome" type="text" placeholder="Como te chamas?" required autocomplete="name">
+          </label>
+          <label for="cf-tel">O teu telemóvel
+            <input id="cf-tel" name="Telemóvel" type="tel" placeholder="9XX XXX XXX" required autocomplete="tel" inputmode="tel">
+          </label>
+          <label for="cf-email">O teu email (opcional)
+            <input id="cf-email" name="email" type="email" placeholder="nome@exemplo.pt" autocomplete="email">
+          </label>
+          <fieldset>
+            <legend>O que procuras?</legend>
+            <div class="chips">
+              <label><input type="radio" name="Serviço" value="Captação de conteúdo"><span>Captação de conteúdo</span></label>
+              <label><input type="radio" name="Serviço" value="UGC"><span>UGC</span></label>
+              <label><input type="radio" name="Serviço" value="Captação de eventos"><span>Eventos</span></label>
+              <label><input type="radio" name="Serviço" value="Design gráfico"><span>Design gráfico</span></label>
+              <label><input type="radio" name="Serviço" value="Ainda não sei" checked><span>Ainda não sei</span></label>
+            </div>
+          </fieldset>
+          <label for="cf-msg">Conta-me mais (opcional)
+            <textarea id="cf-msg" name="Mensagem" rows="3" placeholder="Por exemplo: o teu negócio, o que precisas e para quando"></textarea>
+          </label>
+          <p class="cform-note">Uso os teus dados só para te responder.</p>
+          <button type="submit" class="cform-btn">Enviar pedido</button>
+          <p class="cform-ok" id="obrigado" hidden>Obrigada! Recebi o teu pedido e respondo em breve.</p>
+        </form>
         <ul class="socials">
           <li><a href="https://wa.me/351914790480?text=Ol%C3%A1%20Joana!%20Vi%20o%20teu%20site%20e%20gostava%20de%20saber%20mais%20sobre%20os%20teus%20servi%C3%A7os." target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg></a></li>
           <li><a href="https://www.instagram.com/joanamoreira.pt/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM21.9 8c0-1.6-.4-3-1.6-4.2S17.6 2.1 16 2.1C14.3 2 9.7 2 8 2.1c-1.6 0-3 .4-4.2 1.6S2.2 6.4 2.1 8C2 9.7 2 14.3 2.1 16c0 1.6.4 3 1.6 4.2s2.6 1.6 4.2 1.7c1.7.1 6.3.1 8 0 1.6-.1 3-.4 4.2-1.7s1.6-2.6 1.7-4.2c.1-1.7.1-6.3 0-8zm-2 9.8a3.3 3.3 0 0 1-1.8 1.8c-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4a3.300 3.3 0 0 1-1.8-1.8c-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7A3.3 3.3 0 0 1 6.3 4.600c1.3-.5 4.3-.4 5.700-.4s4.4-.1 5.7.4a3.3 3.3 0 0 1 1.8 1.8c.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.700z"/></svg></a></li>
@@ -488,6 +692,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </a>
 
 <script>
+  // Depois de enviar o formulário, o FormSubmit volta para #obrigado
+  if (location.hash === '#obrigado') {
+    const ok = document.getElementById('obrigado');
+    if (ok) { ok.hidden = false; ok.scrollIntoView({ block: 'center' }); }
+  }
+
+  // Ao dar play num vídeo, pausa os outros
+  document.querySelectorAll('.ugc-media video').forEach(v => v.addEventListener('play', () => {
+    document.querySelectorAll('.ugc-media video').forEach(o => { if (o !== v) o.pause(); });
+  }));
+
   // Separadores do método: Captação de conteúdo / UGC
   document.querySelectorAll('.tabs [role="tab"]').forEach(tab => tab.addEventListener('click', () => {
     document.querySelectorAll('.tabs [role="tab"]').forEach(t => {
