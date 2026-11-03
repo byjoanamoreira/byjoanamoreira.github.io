@@ -6,7 +6,7 @@
 <title>Joana Moreira | Criadora de conteúdos UGC</title>
 <meta name="description" content="Joana Moreira, criadora de conteúdos para negócios e marcas: captação de conteúdo, UGC e captação de eventos.">
 <meta property="og:title" content="Joana Moreira | Criadora de conteúdos UGC">
-<meta property="og:description" content="Captação de conteúdo, UGC e captação de eventos para marcas e negócios.">
+<meta property="og:description" content="Joana Moreira, criadora de conteúdos para negócios e marcas: captação de conteúdo, UGC e captação de eventos.">
 <meta property="og:image" content="https://byjoanamoreira.com/img/hero-2.jpg">
 <meta property="og:url" content="https://byjoanamoreira.com/">
 <link rel="canonical" href="https://byjoanamoreira.com/">
@@ -78,7 +78,11 @@ header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; 
 .nav ul a { text-decoration: none; color: var(--muted); }
 .nav ul a:hover { color: var(--ink); }
 .nav .btn { padding: .6em 1.1em; font-size: .88rem; }
-@media (max-width: 820px) { .nav ul { display: none; } }
+@media (max-width: 820px) {
+  .nav .wrap { flex-wrap: wrap; row-gap: 8px; padding-block: 10px; }
+  .nav nav { order: 3; width: 100%; }
+  .nav ul { justify-content: space-between; gap: 10px; font-size: .88rem; padding-top: 6px; border-top: 1px solid var(--line); }
+}
 
 /* Hero */
 .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding-block: 64px 72px; }
@@ -437,13 +441,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <body>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#topo"><img src="data:image/png;base64,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" alt="Joana Moreira"></a>
+    <a class="brand" href="index.html"><img src="data:image/png;base64,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" alt="Joana Moreira"></a>
     <nav aria-label="Principal">
       <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#processo">Método</a></li>
-        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="servicos.html">Serviços</a></li>
+        <li><a href="metodo.html">Método</a></li>
+        <li><a href="portfolio.html">Portfólio</a></li>
       </ul>
     </nav>
     <a class="btn btn-primary" href="#contacto">Contacto</a>
@@ -459,7 +463,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p class="lead">Capto conteúdos digitais que ajudam a melhorar a tua presença nas redes sociais. Planeio, gravo e entrego tudo pronto a publicar.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="https://wa.me/351914790480?text=Ol%C3%A1%20Joana!%20Vi%20o%20teu%20site%20e%20gostava%20de%20saber%20mais%20sobre%20os%20teus%20servi%C3%A7os." target="_blank" rel="noopener">Falar no WhatsApp</a>
-          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+          <a class="btn btn-ghost" href="servicos.html">Ver serviços</a>
         </div>
       </div>
 
@@ -485,268 +489,6 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
     </div>
   </div>
-
-  <section class="block" id="sobre">
-    <div class="wrap about">
-      <div class="about-photos">
-        <img class="main" src="img/sobre-2.jpg" alt="Joana Moreira com um caderno, a planear conteúdos">
-        <img class="small" src="img/sobre-small.jpg" alt="Joana Moreira a trabalhar no portátil">
-      </div>
-      <div class="about-copy">
-        <span class="eyebrow">Sobre mim</span>
-        <h2>Olá, sou a <em>Joana</em>.</h2>
-        <p>Ajudo negócios que querem destacar-se nas redes sociais de forma autêntica e estratégica, com conteúdos que chamam a atenção e criam uma ligação real com o público.</p>
-        <p>Mais do que criar vídeos ou posts, o meu foco é perceber a identidade da marca, o público-alvo e os objetivos do negócio, para desenvolver conteúdos alinhados com aquilo que a marca quer transmitir.</p>
-        <div class="how-help">
-          <span>Como ajudo a tua marca</span>
-          <p>Conteúdos autênticos que aproximam a marca do seu público e fortalecem a sua presença digital.</p>
-        </div>
-        <ul class="traits" aria-label="Como trabalho">
-          <li>Próxima</li>
-          <li>Rigorosa</li>
-          <li>Estratégica</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="servicos" style="padding-top:0">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Serviços</span>
-        <h2>Três formas de pôr a tua marca <em>a falar</em> nas redes.</h2>
-      </div>
-      <div class="svc-list">
-        <details class="svc" id="svc-captacao">
-          <summary>
-            <img src="img/servico-eventos.jpg" alt="" style="object-position:60% 55%">
-            <span class="svc-num">01</span>
-            <span class="svc-title"><small>Captação</small>Captação de conteúdo<em class="svc-count">2 trabalhos</em></span>
-            <span class="svc-icon" aria-hidden="true"></span>
-          </summary>
-          <div class="svc-body">
-            <p>Planeamento, captação e entrega de conteúdos prontos a publicar, para marcas e negócios que não têm tempo ou ideias para criar conteúdo nas redes sociais.</p>
-            <ul>
-              <li>Reunião para conhecer o negócio</li>
-              <li>Planeamento dos conteúdos</li>
-              <li>Gravação numa só tarde</li>
-              <li>Edição e entrega pronta a publicar</li>
-            </ul>
-            <p class="svc-for"><strong>Para</strong> marcas, negócios locais e empreendedores que querem uma presença online consistente, profissional e mais próxima do público.</p>
-            <div class="svc-work">
-              <span class="svc-work-title">Trabalho realizado</span>
-              <div class="work-strip">
-                <figure class="work">
-                  <a class="work-media" href="#bomcuidar"><img src="img/bomcuidar-depois.jpg" alt="Perfil de Instagram da Bom Cuidar depois do trabalho" loading="lazy"><span class="work-badge">+24% seguidores</span></a>
-                  <figcaption><strong>Bom Cuidar</strong><span>Apoio ao domicílio · ver caso</span></figcaption>
-                </figure>
-                <figure class="work">
-                  <div class="work-media"><video src="videos/tiago.mp4" poster="videos/tiago.jpg" controls playsinline preload="none"></video></div>
-                  <figcaption><strong>Tiago Sousa PT</strong><span>Personal trainer · gravado em iPhone</span></figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </details>
-        <details class="svc" id="svc-ugc">
-          <summary>
-            <img src="img/ugc.jpg" alt="">
-            <span class="svc-num">02</span>
-            <span class="svc-title"><small>UGC</small>Criação de UGC<em class="svc-count">3 vídeos</em></span>
-            <span class="svc-icon" aria-hidden="true"></span>
-          </summary>
-          <div class="svc-body">
-            <p>Conteúdos UGC autênticos, baseados na minha experiência como utilizadora e adaptados à marca, para criar proximidade e credibilidade.</p>
-            <ul>
-              <li>Análise do briefing da marca</li>
-              <li>Persona alinhada com o teu público</li>
-              <li>Guião aprovado antes de gravar</li>
-              <li>Vídeos prontos a usar pela marca</li>
-            </ul>
-            <p class="svc-for"><strong>Para</strong> marcas que querem uma presença digital profissional, mas não têm tempo para criar conteúdo.</p>
-            <div class="svc-work">
-              <span class="svc-work-title">Trabalho realizado</span>
-              <div class="work-strip">
-                <figure class="work">
-                  <div class="work-media"><video src="videos/fini.mp4" poster="videos/fini.jpg" controls playsinline preload="none"></video></div>
-                  <figcaption><strong>Fini</strong><span>Pink Friday · UGC orgânico</span></figcaption>
-                </figure>
-                <figure class="work">
-                  <div class="work-media"><video src="videos/oculos.mp4" poster="videos/oculos.jpg" controls playsinline preload="none"></video></div>
-                  <figcaption><strong>Os Meus Óculos</strong><span>Ótica · UGC orgânico</span></figcaption>
-                </figure>
-                <figure class="work">
-                  <div class="work-media"><video src="videos/zelthy.mp4" poster="videos/zelthy.jpg" controls playsinline preload="none"></video></div>
-                  <figcaption><strong>Zelthy</strong><span>Casa · UGC</span></figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </details>
-        <details class="svc" id="svc-eventos">
-          <summary>
-            <img src="img/servico-captacao.jpg" alt="" style="object-position:50% 45%">
-            <span class="svc-num">03</span>
-            <span class="svc-title"><small>Eventos</small>Captação de eventos<em class="svc-count">1 evento</em></span>
-            <span class="svc-icon" aria-hidden="true"></span>
-          </summary>
-          <div class="svc-body">
-            <p>Captação mobile de eventos, com gravação em tempo real e conteúdo pronto a publicar.</p>
-            <ul>
-              <li>Captação com telemóvel</li>
-              <li>Gravação em tempo real</li>
-              <li>Entrega rápida, até 24h</li>
-              <li>Conteúdo pronto a publicar</li>
-            </ul>
-            <p class="svc-for"><strong>Para</strong> eventos corporativos, ativações de marca, casamentos e ocasiões especiais.</p>
-            <div class="svc-work">
-              <span class="svc-work-title">Trabalho realizado</span>
-              <div class="work-strip">
-                <figure class="work">
-                  <div class="work-media"><video src="videos/eberlin.mp4" poster="videos/eberlin.jpg" controls playsinline preload="none"></video></div>
-                  <figcaption><strong>Eberlin na Expocosmética</strong><span>Stories e vídeos recap em tempo real</span></figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="block process-band" id="processo">
-    <div class="wrap process">
-      <img class="process-photo" src="img/processo.jpg" alt="Mãos a escrever no portátil durante o planeamento de conteúdos">
-      <div>
-      <div class="head">
-        <span class="eyebrow">O meu método</span>
-        <h2>Do primeiro contacto ao vídeo <em>publicado</em>.</h2>
-      </div>
-      <div class="tabs" role="tablist" aria-label="Escolhe o serviço">
-        <button type="button" role="tab" id="tab-captacao" aria-controls="steps-captacao" aria-selected="true">Captação de conteúdo</button>
-        <button type="button" role="tab" id="tab-ugc" aria-controls="steps-ugc" aria-selected="false">UGC</button>
-      </div>
-      <ol class="timeline" id="steps-captacao" role="tabpanel" aria-labelledby="tab-captacao">
-        <li>
-          <span class="tl-step">Passo 1 · Conhecer</span>
-          <h3>Reunião inicial</h3>
-          <p>Marcamos uma conversa para perceber o teu negócio e o teu público-alvo, e começamos a pensar em ideias de conteúdo que façam sentido para a tua marca.</p>
-          <span class="tl-result">Ficas com ideias de conteúdo pensadas para a tua marca</span>
-        </li>
-        <li>
-          <span class="tl-step">Passo 2 · Planear</span>
-          <h3>Planeamento</h3>
-          <p>Com base nessa conversa, preparo todo o planeamento de conteúdos e envio-te para aprovação, para ficares a par de tudo antes de gravarmos.</p>
-          <span class="tl-result">Aprovas o plano antes de se gravar alguma coisa</span>
-        </li>
-        <li>
-          <span class="tl-step">Passo 3 · Gravar</span>
-          <h3>Captação</h3>
-          <p>Depois de aprovado, marcamos um dia para gravar. Como já está tudo planeado, conseguimos gravar tudo numa só tarde, sem perder tempo a pensar no que fazer no momento.</p>
-          <span class="tl-result">Tudo gravado numa só tarde</span>
-        </li>
-        <li>
-          <span class="tl-step">Passo 4 · Entregar</span>
-          <h3>Edição e entrega</h3>
-          <p>Trato da edição de todos os conteúdos e entrego-tos prontos a publicar, sem precisares de mexer em mais nada.</p>
-          <span class="tl-result">Recebes os conteúdos prontos a publicar</span>
-        </li>
-      </ol>
-      <ol class="timeline" id="steps-ugc" role="tabpanel" aria-labelledby="tab-ugc" hidden>
-        <li>
-          <span class="tl-step">Passo 1 · Perceber</span>
-          <h3>Briefing</h3>
-          <p>Recebo o briefing da marca e analiso bem o que é pedido, o público-alvo e o objetivo por trás do conteúdo. Se precisares de ajuda a definir isto, podemos marcar uma reunião para percebermos em conjunto o que faz mais sentido para a tua marca.</p>
-          <span class="tl-result">Objetivo e público bem definidos</span>
-        </li>
-        <li>
-          <span class="tl-step">Passo 2 · Criar a persona</span>
-          <h3>Persona</h3>
-          <p>Com base nessa informação, crio uma persona alinhada com o público da marca, para que o conteúdo pareça genuíno e não um anúncio qualquer.</p>
-          <span class="tl-result">Uma voz próxima de quem te segue</span>
-        </li>
-        <li>
-          <span class="tl-step">Passo 3 · Escrever</span>
-          <h3>Guião</h3>
-          <p>Escrevo o guião com tudo pensado ao pormenor e envio-o para aprovação, para garantir que fica tudo alinhado antes de avançarmos para a gravação.</p>
-          <span class="tl-result">Aprovas o guião antes de gravar</span>
-        </li>
-        <li>
-          <span class="tl-step">Passo 4 · Gravar e entregar</span>
-          <h3>Gravação e entrega</h3>
-          <p>Depois de aprovado, gravo o conteúdo e entrego tudo pronto a usar pela marca.</p>
-          <span class="tl-result">Vídeos prontos a usar nas redes ou em anúncios</span>
-        </li>
-      </ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" id="ugc">
-    <div class="wrap">
-      <div class="cases">
-        <div class="head">
-          <span class="eyebrow">Caso real · Captação de conteúdo</span>
-          <h2>Bom Cuidar: <em>antes e depois</em>.</h2>
-          <p>Serviço de apoio ao domicílio na Póvoa de Varzim e Vila do Conde.</p>
-        </div>
-
-        <article class="case case-bc" id="bomcuidar">
-          <div class="ba">
-            <figure class="ba-shot">
-              <span class="ba-label">Antes</span>
-              <img src="img/bomcuidar-antes.jpg" alt="Perfil de Instagram da Bom Cuidar antes do trabalho: 22 publicações e 171 seguidores">
-            </figure>
-            <figure class="ba-shot">
-              <span class="ba-label ba-after">Depois</span>
-              <img src="img/bomcuidar-depois.jpg" alt="Perfil de Instagram da Bom Cuidar depois do trabalho: 30 publicações e 212 seguidores">
-            </figure>
-          </div>
-
-          <div class="case-copy">
-            <div class="ba-stats">
-              <div><span>Seguidores</span><strong>171 → 212</strong><small>+41 (+24%)</small></div>
-              <div><span>Publicações</span><strong>22 → 30</strong><small>+8 novas</small></div>
-            </div>
-
-            <div class="ba-block">
-              <h3>Análise do perfil antes</h3>
-              <ul>
-                <li>Feed sem uma linha gráfica definida, com estilos e cores diferentes de publicação para publicação.</li>
-                <li>Sem destaques organizados nos stories.</li>
-                <li>Link da bio para o Facebook, em vez de reunir os contactos num só sítio.</li>
-                <li>Pouco vídeo com a equipa a dar a cara pelo serviço.</li>
-              </ul>
-            </div>
-
-            <div class="ba-block">
-              <h3>O que fiz</h3>
-              <ul>
-                <li><strong>Nova linha gráfica</strong> com as cores da marca e modelos consistentes para as publicações.</li>
-                <li><strong>Captação e estruturação de vídeos</strong> com a equipa, para apresentar o serviço de forma próxima.</li>
-                <li><strong>Destaques organizados</strong>: Atividades, Serviços, Feedbacks, Equipa e Localização.</li>
-                <li><strong>Bio e link revistos</strong>, com todos os contactos num só link.</li>
-              </ul>
-            </div>
-
-            <blockquote>Com a minha ajuda na captação e estruturação do conteúdo, conseguimos transformar essas ideias em vídeos claros, autênticos e alinhados com a mensagem que queria transmitir.</blockquote>
-          </div>
-        </article>
-      </div>
-      <div class="proof" id="portfolio">
-        <div class="proof-number">
-          <span class="big">+30</span>
-          <span class="small">marcas e negócios</span>
-        </div>
-        <div class="proof-copy">
-          <h2>Já ajudei mais de <em>30 marcas</em> e negócios.</h2>
-          <p>De marcas de beleza, casa e alimentação a negócios locais e eventos. Podes ver os projetos, vídeos e fotografias no meu portfólio.</p>
-          <div><a class="btn btn-primary" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">Ver o meu portfólio</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="contact-band" id="contacto">
     <div class="wrap contact2">
