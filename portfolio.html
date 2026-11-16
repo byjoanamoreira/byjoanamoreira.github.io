@@ -348,6 +348,33 @@ a.work-media:hover img { transform: scale(1.03); }
   .home-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* Início: Sobre mim com vídeo do Instagram */
+.home-about-ig { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
+.ig-video { display: grid; gap: 14px; justify-items: center; min-width: 0; }
+.ig-video iframe { width: 100%; max-width: 380px; height: 640px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+@media (max-width: 860px) { .home-about-ig { grid-template-columns: 1fr; } .ig-video iframe { height: 600px; } }
+
+/* Portfólio completo por categoria */
+.pf-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; position: sticky; top: calc(64px + env(safe-area-inset-top, 0px)); z-index: 5; padding: 10px 0; background: var(--bg); }
+.pf-tabs a { text-decoration: none; font-weight: 600; font-size: .92rem; padding: .6em 1.2em; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); transition: background .2s, color .2s; }
+.pf-tabs a:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.pf-cat { display: grid; gap: 40px; scroll-margin-top: 140px; }
+.pf-cat + .pf-cat { margin-top: 80px; }
+.pf-cat-title { display: flex; align-items: baseline; gap: 14px; font-size: var(--step-3); padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.pf-cat-title span { font-family: var(--f-mono); font-size: .8rem; letter-spacing: .14em; color: var(--accent); }
+.pf-project { display: grid; gap: 18px; }
+.pf-project-head { display: grid; gap: 6px; max-width: 70ch; }
+.pf-project-head h4 { font-family: var(--f-display); font-weight: 400; font-size: 1.6rem; margin: 0; }
+.pf-project-head p { color: var(--muted); }
+.pf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+.pf-item { margin: 0; display: grid; gap: 6px; min-width: 0; }
+.pf-media { aspect-ratio: 9 / 16; max-width: 100%; border-radius: 16px; overflow: hidden; background: var(--ink); }
+.pf-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pf-item figcaption { font-size: .85rem; color: var(--muted); }
+.pf-project .case { margin-top: 8px; }
+.pf-cat ~ .proof { margin-top: 88px; }
+@media (max-width: 520px) { .pf-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+
 /* Casos reais */
 .cases { margin-top: 0; display: grid; gap: 24px; }
 .cases .head { margin-bottom: 8px; }
@@ -457,14 +484,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <main id="topo">
   <section class="block page-top" id="ugc">
     <div class="wrap">
-      <div class="cases">
-        <div class="head">
-          <span class="eyebrow">Caso real · Captação de conteúdo</span>
-          <h2>Bom Cuidar: <em>antes e depois</em>.</h2>
-          <p>Serviço de apoio ao domicílio na Póvoa de Varzim e Vila do Conde.</p>
-        </div>
+      <div class="head">
+        <span class="eyebrow">Portfólio</span>
+        <h2>O meu trabalho, <em>por serviço</em>.</h2>
+        <p>Carrega no play para ver cada vídeo.</p>
+      </div>
+      <nav class="pf-tabs" aria-label="Categorias do portfólio">
+        <a href="#pf-captacao">Captação de conteúdo</a>
+        <a href="#pf-eventos">Eventos</a>
+        <a href="#pf-ugc">UGC</a>
+      </nav>
 
-        <article class="case case-bc" id="bomcuidar">
+      <div class="pf-cat" id="pf-captacao">
+        <h3 class="pf-cat-title"><span>01</span>Captação de conteúdo</h3>
+
+        <div class="pf-project">
+          <div class="pf-project-head"><h4>Bom Cuidar</h4><p>Serviço de apoio ao domicílio que não tinha presença nas redes sociais. Planeei todos os conteúdos e o público-alvo antes de gravar.</p></div>
+          <div class="pf-grid">
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/6f0f6eb2337675e6bd1c428531b93d88.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/5c3919a25dab5681f3b675a154a6b6e6.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/5bce882d8ec52401eaa60713ca9a23ac.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/f4f39147e15b6db9336ffceda9bbdb09.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/2d813bd6bf1738ec2106638de0f15ac0.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/095ec3629f04b64a31ed9a26efec4916.jpg" controls playsinline preload="none"></video></div></figure>
+          </div>
+          <article class="case case-bc" id="bomcuidar">
           <div class="ba">
             <figure class="ba-shot">
               <span class="ba-label">Antes</span>
@@ -505,7 +546,57 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <blockquote>Com a minha ajuda na captação e estruturação do conteúdo, conseguimos transformar essas ideias em vídeos claros, autênticos e alinhados com a mensagem que queria transmitir.</blockquote>
           </div>
         </article>
+        </div>
+
+        <div class="pf-project">
+          <div class="pf-project-head"><h4>Tiago Sousa PT</h4><p>Personal trainer sem presença nas redes nem ideias de conteúdo. Tudo gravado em iPhone, para mostrar a pessoa por trás dos treinos.</p></div>
+          <div class="pf-grid">
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/39d4bb0a346acb47f52051b7f9558535.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/b901b8e93e077baa4dba06ac44c726bd.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/1e15ce412acf00af9e0ef4b54d7973ab.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/2ec54161e0d8e8a39947f02baf41c388.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/a9617e898e5aa1fb0a559f2b6f722929.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/48c32edb8a314ee0c5ed1d03a650c020.jpg" controls playsinline preload="none"></video></div></figure>
+          </div>
+        </div>
       </div>
+
+      <div class="pf-cat" id="pf-eventos">
+        <h3 class="pf-cat-title"><span>02</span>Eventos</h3>
+        <div class="pf-project">
+          <div class="pf-project-head"><h4>Eberlin Biocosmetics · Expocosmética</h4><p>Cobri o evento e publiquei stories e vídeos recap em tempo real para a marca.</p></div>
+          <div class="pf-grid">
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/57c6235beb9318a5172c3a767e1255fe.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/241b8c9774f78e41a252a61e66de9a22.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/b3d6b0a169cbc154e8ee7d2276f79e51.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/aea438ffc4954510e0553398dd7ce11d.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/20b25e468253131b1a2d057c87ace34c.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/2cd9864ac6e2e8de8282569b69828d4d.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/0cff83ed7509e7be96b93b956a2962f5.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/eb332681627ee77553a2e40c496f956a.jpg" controls playsinline preload="none"></video></div></figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="pf-cat" id="pf-ugc">
+        <h3 class="pf-cat-title"><span>03</span>UGC</h3>
+        <div class="pf-project">
+          <div class="pf-project-head"><h4>Vídeos UGC</h4><p>Apps, beleza e skincare, ótica, casa e alimentação: conteúdo gravado como utilizadora real, adaptado a cada marca.</p></div>
+          <div class="pf-grid">
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/19b4b62bc969bfda421bc5b81b4b1a09.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/c0e6ff42b465c6d054372fdabbc48ff8.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/0873807ab76e81e663aee358f95ddeee.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/236cf7c3a08d8976ce5759a08dd9a629.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/8e45686fad757bcdcbfc1a377033fd09.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/78f2e112a4e335bf31283fa711ca6e2f.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/251d372f161b23c6b207354383815fa5.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/cc4fffcde01ac1b6f4510fbc08ca8325.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/0901abf2108576de483e0685207fae5b.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/77776a8cd03a0a7fa80cb99d56aea773.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/c281d182d7b8dfaf2c98b7c08e4f4a85.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/9a6fc1e464643a9b14bcc7c66412d90d.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/51f402a742a8183391a5eed7802f1b9b.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/8cabe4cf553c676def86954ea2057113.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/2b8952852ab830af84664dc28e32fe86.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/ec55e5e42b6dad54503467ab6fb0e914.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/2fd1635f49ee2aa4e6347677e1b1a994.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/3ae187bce100348b829b5b4caa6db56c.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/fab25334188d4f51dd725ca67f8f0d45.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/b87db23f279c3ea623d12aa5f5fe1192.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/1d3f8b275845ba8ae23082b3facb0b67.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/eea57f209412daaaf0db4df97715fd24.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/2e39bfa33565c7d1c2e48cded3049704.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/081bc5a1979322472763e26a3d31008e.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/66d3b73ff4a539f39314d487c883f38d.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/ee673a96fd72dbc71bea2faa198dce73.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/d3a3bf0acd21b756ee068aaae999224f.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/4b2288be820a502846a9a51c455aaa88.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/7ea9c4fd6b6d41eac460ab1e2d2cdb62.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/ac98242eae24d48083f550341e9226cc.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/4d9f033cba75966a9a01310e6b511335.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/1ef6a1478f0a29a1be22e6458303bb38.jpg" controls playsinline preload="none"></video></div></figure>
+            <figure class="pf-item"><div class="pf-media"><video src="https://joanamoreiraugc.my.canva.site/pt/_assets/video/b7e31eab1d86cdf0091fd30a87bcd599.mp4" poster="https://joanamoreiraugc.my.canva.site/pt/_assets/video/a5620ba372f0776fd7e6d89dc650ef44.jpg" controls playsinline preload="none"></video></div></figure>
+          </div>
+        </div>
+      </div>
+
       <div class="proof" id="portfolio">
         <div class="proof-number">
           <span class="big">+30</span>
@@ -517,9 +608,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <div><a class="btn btn-primary" href="https://joanamoreiraugc.my.canva.site/pt" target="_blank" rel="noopener">Ver o meu portfólio</a></div>
         </div>
       </div>
+
     </div>
   </section>
-
   <section class="contact-band" id="contacto">
     <div class="wrap contact2">
       <div class="contact2-copy">
